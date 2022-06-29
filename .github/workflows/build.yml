@@ -50,17 +50,20 @@
               run: terraform  apply -auto-approve
 
             #- name: Output RG Name
-            - id: a
+            - id: retrieve_rg_name
               #shell: bash
               run: |
                  rgname=$(terraform output resource_group_name)
                  echo "::set-output name=rg::$rgname"
 
-            - id: output_check
-              run: echo ${{ steps.a.outputs.rg }}
+            - id: retrieve_func_name
+              run: 
+                 funcname=$(terraform output function_app_name)
+                 echo "::set-output name=func::$funcname"
 
             outputs:
-              output1: ${{ steps.a.outputs.rg }}  
+              output1: ${{ steps.retrieve_rg_name.outputs.rg }}
+              output2: ${{ steps.retrieve_func_name.outputs.func }}
           
 
 
