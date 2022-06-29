@@ -73,10 +73,12 @@
                  $file="main.js"
                  #echo $file
                  $find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
-                 $replace = "const functionApi = ${{ steps.retrieve_func_url.outputs.func_url }}"
+                 $replace = "const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
                  #echo $replace
                  (Get-Content $file).replace($find, $replace) | Set-Content $file
-                 Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7"
+                 $snippet=(Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7")
+                 echo "::set-output name=snip::$snippet"
+
 
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
