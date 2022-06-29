@@ -76,10 +76,10 @@
                  filename="main.js"
                  #find="localApi"
                  find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
-                 replace="const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
-                 #replace="testAPI"
+                 #replace="const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
+                 replace="testAPI"
                  sed -i "s|$find|$replace|i" $filename
-                 verify=$(cat main.js | grep "getresumecounterfunc4eb04f7")
+                 verify=$(cat main.js | grep "testAPI")
                  echo $verify
             
             
