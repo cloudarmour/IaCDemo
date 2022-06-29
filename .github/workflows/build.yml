@@ -1,11 +1,13 @@
       
 
       #on: [push]
+      #on:
+      #  push:
+      #    paths:
+      #    - 'tf-manifests/Infrastructure/*'
+      #    - '.github/workflows/build.yml'
       on:
-        push:
-          paths:
-          - 'tf-manifests/Infrastructure/*'
-          - '.github/workflows/build.yml'
+        workflow_dispatch:
 
       name: Terraform Infrastructure deployment
       defaults: #decides where the code gets checked out   
