@@ -69,7 +69,15 @@
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_name.outputs.func }}
               output3: ${{ steps.retrieve_func_url.outputs.func_url }}
-          
+
+            - name: update main.js file
+              shell: pwsh
+              working-directory: code/frontend
+              run: |
+                 $file= "main.js"
+                 echo $file
+                 
+
 
 
 
