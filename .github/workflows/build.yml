@@ -51,7 +51,7 @@
 
             #- name: Output RG Name
             - id: a
-              shell: bash
+              #shell: bash
               run: |
                  rgname=$(terraform output resource_group_name)
                  echo $rgname
