@@ -69,7 +69,7 @@
               shell: pwsh
               working-directory: code/frontend
               run: |
-                 #ls
+                 ls
                  $file="main.js"
                  #echo $file
                  $find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
