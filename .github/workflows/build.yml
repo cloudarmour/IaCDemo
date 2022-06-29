@@ -57,7 +57,7 @@
                  echo "::set-output name=rg::$rgname"
 
             - id: retrieve_func_name
-              run: 
+              run: |
                  funcname=$(terraform output function_app_name)
                  echo "::set-output name=func::$funcname"
 
