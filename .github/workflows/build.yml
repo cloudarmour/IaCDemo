@@ -65,10 +65,17 @@
                  funcurl=$(terraform output func_app_url)
                  echo "::set-output name=func_url::$funcurl"
 
+            - name: update main.js file
+              run: |
+                 file="main.js"
+                 echo $file
+                  
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_name.outputs.func }}
               output3: ${{ steps.retrieve_func_url.outputs.func_url }}
+
+            
                  
 
 
