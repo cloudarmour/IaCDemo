@@ -51,7 +51,6 @@
 
             - name: Output RG Name
             - id: retrieve_rg_name
-              #shell: bash
               run: |
                  rgname=$(terraform output resource_group_name)
                  echo "::set-output name=rg::$rgname"
