@@ -78,7 +78,7 @@
                  $replace = "const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
                  #echo $replace
                  (Get-Content $file).replace($find, $replace) | Set-Content $file
-                 snippet=$(Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7")
+                 $snippet=Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7"
                  echo $snippet
 
 
