@@ -72,7 +72,7 @@
 
             - name: update main.js file
               shell: pwsh
-              working-directory: code/frontend
+              #working-directory: code/frontend
               run: |
                  $file= "main.js"
                  echo $file
