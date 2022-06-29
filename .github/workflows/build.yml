@@ -67,9 +67,12 @@
 
             - name: update main.js file
               shell: pwsh
+              working-directory: code/frontend
               run: |
                  $file="main.js"
-                 echo $file
+                 #echo $file
+                 $find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
+                 $replace = "const functionApi = ${{ steps.retrieve_func_url.outputs.func_url }}"
 
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
