@@ -1,7 +1,7 @@
 # Resource 1: Storage account to host the file system of the container running our function app. This is where the code will be uploaded as well as where logs and any temporary files will be written to.
 
 resource "azurerm_storage_account" "myFuncStorage" {
-  name                     = "myIaCDemofuncstorage"
+  name                     = "myiacdemofuncstorage"
   resource_group_name      = azurerm_resource_group.myResumeRG.name
   location                 = azurerm_resource_group.myResumeRG.location
   account_tier             = "Standard"
