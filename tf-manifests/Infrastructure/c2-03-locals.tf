@@ -10,9 +10,9 @@ locals {
         ##This is a map. hence key value pairs separated by comma. 
    }
 
-   locals {
+   
   func_app_name = "GetResumeCounter"
-  }
+  
 
   #  agw_inbound_ports_map = {
   #   "100" : "80", # If the key starts with a number, you must use the colon syntax ":" instead of "="
