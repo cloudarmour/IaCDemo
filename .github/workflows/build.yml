@@ -52,7 +52,7 @@
             #- name: Output RG Name
             - id: a
               run: |
-                 $rgname=(terraform output resource_group_name)
+                 $rgname = (terraform output resource_group_name)
                  echo ::set-output name=rg::$($rgname)
 
             outputs:
