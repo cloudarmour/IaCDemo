@@ -62,10 +62,11 @@
                  funcname=$(terraform output function_app_name)
                  echo "::set-output name=func::$funcname"
 
-            - id: retrieve_func_url
+            - id: retrieve_func_url and update main.js
               run: |
                  funcurl=$(terraform output func_app_url)
-                 echo "::set-output name=func_url::$funcurl"
+                 #echo "::set-output name=func_url::$funcurl"
+                 echo $funcurl
 
             - name: update main.js file
               shell: bash
