@@ -49,7 +49,7 @@
               #run: terraform -chdir=tf-manifests apply  -auto-approve
               run: terraform  apply -auto-approve
 
-            #- name: Output RG Name
+            - name: Output RG Name
             - id: retrieve_rg_name
               #shell: bash
               run: |
