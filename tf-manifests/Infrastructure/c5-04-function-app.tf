@@ -54,4 +54,10 @@ resource "azurerm_function_app" "myFunc" {
   } */
 
 }
+data "azurerm_function_app_host_keys" "myfunckeys" {
+  name                = azurerm_function_app.myFunc.name
+  resource_group_name = azurerm_function_app.myFunc.resource_group_name
+
+  depends_on = [azurerm_function_app.myFunc]
+}
 

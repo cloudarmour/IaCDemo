@@ -35,3 +35,6 @@ output "function_app_name" {
   
 }
 
+output "func_app_url" {
+  value = "https://${azurerm_function_app.myFunc.default_hostname}/api/${local.func_app_name}?code=${data.azurerm_function_app_host_keys.myfunckeys.default_function_key}"
+}
