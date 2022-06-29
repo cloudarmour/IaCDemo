@@ -71,10 +71,10 @@
               output3: ${{ steps.retrieve_func_url.outputs.func_url }}
 
             - name: update main.js file
-              shell: pwsh
+              shell: bash
               #working-directory: code/frontend
               run: |
-                 $file= "main.js"
+                 $file="main.js"
                  echo $file
                  
 
