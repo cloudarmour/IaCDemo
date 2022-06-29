@@ -54,7 +54,7 @@
               #shell: bash
               run: |
                  rgname=$(terraform output resource_group_name)
-                 echo ::set-output name=rg::$rgname
+                 echo "::set-output name=rg::$rgname"
 
             outputs:
               output1: ${{ steps.a.outputs.rg }}  
