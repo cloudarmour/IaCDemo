@@ -8,7 +8,7 @@
           - '.github/workflows/build.yml'
 
       name: Terraform Infrastructure deployment
-      defaults: #decides where the code gets checked out from   
+      defaults: #decides where the code gets checked out   
         run:
           working-directory: tf-manifests/Infrastructure
 
