@@ -77,7 +77,7 @@
                  find="localApi"
                  #replace="const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
                  replace="testAPI"
-                 sed -i 's/$find/$replace/i' $filename
+                 sed -i "s/$find/$replace/i" $filename
                  verify=$(cat main.js | grep "testAPI")
                  echo $verify
             
