@@ -69,12 +69,13 @@
               shell: pwsh
               working-directory: code/frontend
               run: |
-                 ls
+                 #ls
                  $file="main.js"
                  #echo $file
                  $find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
                  $replace = "const functionApi = ${{ steps.retrieve_func_url.outputs.func_url }}"
                  #echo $replace
+                 (Get-Content $file).replace($find, $replace) | Set-Content $file
 
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
