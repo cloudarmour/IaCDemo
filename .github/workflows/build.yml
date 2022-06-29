@@ -1,13 +1,13 @@
       
 
       #on: [push]
-      #on:
-      #  push:
-      #    paths:
-      #    - 'tf-manifests/Infrastructure/*'
-      #    - '.github/workflows/build.yml'
       on:
-        workflow_dispatch:
+        push:
+          paths:
+          - 'tf-manifests/Infrastructure/*'
+          - '.github/workflows/build.yml'
+      #on:
+      #  workflow_dispatch:
 
       name: Terraform Infrastructure deployment
       defaults: #decides where the code gets checked out   
@@ -68,18 +68,21 @@
                  echo "::set-output name=func_url::$funcurl"
 
             - name: update main.js file
-              shell: pwsh
+              shell: bash
               working-directory: code/frontend
               run: |
-                 #ls
-                 $file="main.js"
-                 #echo $file
-                 $find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
-                 $replace = "const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
-                 #echo $replace
-                 (Get-Content $file).replace($find, $replace) | Set-Content $file
-                 $snippet=Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7"
-                 echo $snippet
+                 ls
+                 filename="main.js"
+                 find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
+                 replace="const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
+                 echo "NEW_STRING=$replace" >> $GITHUB_ENV
+            
+            - name: show func url
+              run: |
+                 echo ${{ env.NEW_STRING}}
+                
+
+
 
 
             outputs:
