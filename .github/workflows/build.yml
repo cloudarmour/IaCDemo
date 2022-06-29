@@ -35,35 +35,23 @@
               run: echo 'root directory --> ${{ github.workspace }}'
 
 
-            # - name: Check out source code
-            #   uses: actions/checkout@v2
-
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v1
+              with:
+                terraform_wrapper:false
 
             - name: Terraform Init
               #run: terraform  -chdir=tf-manifests init
               run: terraform  init
 
-            # - name: Terraform state
-            #   run: terraform  -chdir=tf-manifests state list
-
-            #- name: Terraform Format
-            #  run: terraform fmt -check
-
-            # - name: Terraform Plan
-            #   run: terraform -chdir=tf-manifests plan
-
-            # - name: State file unlock
-            #   run: terraform force-unlock 58dad817-b2b3-f223-c548-2041ffb063cb
 
             - name: Terraform Apply
               #run: terraform -chdir=tf-manifests apply  -auto-approve
               run: terraform  apply -auto-approve
 
-            # - name: Upload artifact
-            #   uses: action/upload-artifact@v1
-            #   with:
-            #     name: azcopy-logs
-            #     #path: /home/runner/.azcopy/**
-            #     path: ${{ github.workspace}}/../../../.azcopy/**
+            - name: Output RG Name
+            - id: a
+              run: echo "::set-output name=rg::$(terraform output myResumeRG)"
+              
+
+
