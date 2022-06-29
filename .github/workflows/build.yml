@@ -77,7 +77,7 @@
                  find="const localApi = 'http://localhost:7071/api/GetResumeCounter';"
                  echo $find
                  replace="const functionApi = '${{ steps.retrieve_func_url.outputs.func_url }}';"
-                 sed -i "s/$find/$replace/i" $filename
+                 sed -i 's/$find/$replace/i' $filename
                  verify=$(cat main.js | grep "getresumecounterfunc4eb04f7")
                  echo $verify
             
