@@ -56,8 +56,11 @@
                  rgname=$(terraform output resource_group_name)
                  echo "::set-output name=rg::$rgname"
 
-          outputs:
-            output1: ${{ steps.a.outputs.rg }}  
+            - id: output check
+              run: echo ${{ steps.a.outputs.rg }}
+              
+            outputs:
+              output1: ${{ steps.a.outputs.rg }}  
           
 
 
