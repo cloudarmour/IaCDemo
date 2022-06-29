@@ -66,10 +66,11 @@
                  echo "::set-output name=func_url::$funcurl"
 
             - name: update main.js file
+              shell: pwsh
               run: |
-                 file="main.js"
+                 $file="main.js"
                  echo $file
-                  
+
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_name.outputs.func }}
