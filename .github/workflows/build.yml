@@ -30,12 +30,6 @@
             - name: Check out source code
               uses: actions/checkout@v2
 
-
-            # Only works when you run terraform locally 
-            # - name: Login to Azure
-            #   uses: azure/login@v1
-            #   with:
-            #     creds: ${{ secrets.AZURE_CREDENTIALS }}
             
             - name: print path
               run: echo 'root directory --> ${{ github.workspace }}'
