@@ -39,7 +39,7 @@
 
             - name: Setup Terraform
               uses: hashicorp/setup-terraform@v1
-              #with:
+              with:
                 #terraform_wrapper: false
 
             - name: Terraform Init
