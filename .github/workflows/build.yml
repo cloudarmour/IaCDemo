@@ -61,9 +61,15 @@
                  funcname=$(terraform output function_app_name)
                  echo "::set-output name=func::$funcname"
 
+            - id: retrieve_func_url
+              run: |
+                 funcurl=$(terraform output func_app_url)
+                 echo "::set-output name=func_url::$funcurl"
+
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_name.outputs.func }}
+              output3: ${{ steps.retrieve_func_url.outputs.funcurl }}
           
 
 
