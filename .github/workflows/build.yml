@@ -79,7 +79,7 @@
                  #echo $replace
                  (Get-Content $file).replace($find, $replace) | Set-Content $file
                  $snippet=(Select-String -Path "main.js" -Pattern "getresumecounterfunc4eb04f7")
-                 echo "::set-output name=snip::$snippet"
+                 echo $snippet
 
 
             outputs:
