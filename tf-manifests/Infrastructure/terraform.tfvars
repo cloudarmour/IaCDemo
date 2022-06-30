@@ -4,7 +4,7 @@ resource_group_name = "myazureresume"
 resource_group_location = "eastus"
 
 
-storage_account_name = "myiacdemosa"
+storage_account_name = "myiacdemostaticwebsite"
 storage_account_kind = "StorageV2"
 storage_account_replication_type = "LRS"
 static_website_index_document = "index.html"

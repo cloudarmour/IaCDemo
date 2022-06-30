@@ -64,6 +64,11 @@
               run: |
                  funcurl=$(terraform output func_app_url)
                  echo "::set-output name=func_url::$funcurl"
+
+            - id: retrieve_static_website_sa
+              run: |
+                static=$(terraform output storage_account_name)
+                echo "::set-output name=web::$static"
                 
             - name: check the output from func url retrieval
               run: echo ${{ steps.retrieve_func_url.outputs.func_url }}
@@ -84,8 +89,8 @@
 
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
-              output2: ${{ steps.retrieve_func_name.outputs.func }}
-              output3: ${{ steps.retrieve_func_url.outputs.func_url }}
+              output2: ${{ steps.retrieve_func_url.outputs.func_url }}
+              output3: ${{ steps.retrieve_static_website_sa.outputs.web }}
 
           UploadtoBlobStorage:
 
@@ -104,9 +109,12 @@
               with:
                   azcliversion: 2.30.0
                   inlineScript: |
-                              #az account set -s ${{secrets.TF_SUBSCRIPTION_ID}}
-                              #az account set -s "9619d67e-52a5-4c61-9959-0c7bc2066775"
-                              az storage account list  -g ${{ needs.build-and-deploy-infrastructure-piece.outputs.output1 }} --query "[0].{name:name}" --output tsv
+                              storage_account=${{ needs.build-and-deploy-infrastructure-piece.outputs.output3 }}
+                              az storage blob upload-batch --account-name $storage_account  -d '$web' -s code/frontend/
+            
+            - name: Azure Log Out
+              run: |
+                az logout
                  
 
 
