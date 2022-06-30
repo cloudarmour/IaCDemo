@@ -1,7 +1,7 @@
 #Resource 1 - Create Storage Account
 resource "azurerm_storage_account" "resume_static_storage" {
     
-    name = "${var.storage_account_name}${random_string.myrandom.result}"
+    name = "${var.storage_account_name}"
     resource_group_name = azurerm_resource_group.myResumeRG.name
     #resource_group_name = data.terraform_remote_state.infrastructure.outputs.resource_group_name
     location = azurerm_resource_group.myResumeRG.location
