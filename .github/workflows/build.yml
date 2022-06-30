@@ -84,7 +84,7 @@
                   #azcliversion: 2.0.72
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
                   inlineScript: |
-                 az storage account list  -g ${{ steps.retrieve_func_url.outputs.func_url }} --query "[0].{name:name}" --output tsv
+                              az storage account list  -g ${{ steps.retrieve_func_url.outputs.func_url }} --query "[0].{name:name}" --output tsv
 
                 
             outputs:
