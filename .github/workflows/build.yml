@@ -100,7 +100,7 @@
                 creds: ${{ secrets.AZURE_CREDENTIALS }}
 
             - name: and display something
-              uses: azure/CLI@v1
+              uses: azure/CLI@v1.0.4
               with:
                   azcliversion: 2.29.2
                   inlineScript: |
