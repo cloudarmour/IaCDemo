@@ -81,10 +81,12 @@
                  verify=$(cat main.js | grep "getresumecounterfunc4eb04f7")
                  echo $verify
             
-            - name: login via az cli and display something
+            - name: login via az cli
               uses: azure/login@v1
               with:
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+            - name: and display something
               uses: azure/CLI@v1
               with:
                   azcliversion: 2.0.72
