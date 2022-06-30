@@ -91,6 +91,7 @@
               with:
                   azcliversion: 2.0.72
                   inlineScript: |
+                              az account set ${{secrets.TF_SUBSCRIPTION_ID}}
                               az storage account list  -g ${{ steps.retrieve_rg_name.outputs.rg }} --query "[0].{name:name}" --output tsv
 
                 
