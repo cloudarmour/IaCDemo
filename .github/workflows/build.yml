@@ -55,6 +55,10 @@
 
             
         
+            - id: retrieve_rg_name
+              run: |
+                rgname=$(terraform output resource_group_name)
+                echo "::set-output name=rg::$rgname"
 
             - id: retrieve_func_url
               run: |
@@ -79,12 +83,13 @@
             
             - name: login via az cli and display something
               uses: azure/login@v1
-              #uses: azure/CLI@v1
               with:
-                  #azcliversion: 2.0.72
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
+              uses: azure/CLI@v1
+              with:
+                  azcliversion: 2.0.72
                   inlineScript: |
-                              az storage account list  -g ${{ steps.retrieve_func_url.outputs.func_url }} --query "[0].{name:name}" --output tsv
+                              az storage account list  -g ${{ steps.retrieve_rg_name.outputs.rg }} --query "[0].{name:name}" --output tsv
 
                 
             outputs:
