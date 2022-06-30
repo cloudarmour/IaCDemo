@@ -86,33 +86,35 @@
                  verify=$(cat main.js | grep "getresumecounterfunc4eb04f7")
                  echo $verify
             
-            - name: login to AZ CLI
-              uses: azure/login@v1
-              with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
-            
-            - name: and upload frontend code to blob storage
-              uses: azure/CLI@v1
-              with:
-                  azcliversion: 2.30.0
-                  inlineScript: |
-                              storage_account=${{ steps.retrieve_static_website_sa.outputs.web }}
-                              az storage blob upload-batch --account-name $storage_account  -d '$web' -s code/frontend/
-            
-            - name: Azure Log Out
-              run: |
-                az logout
-                
+
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_url.outputs.func_url }}
               output3: ${{ steps.retrieve_static_website_sa.outputs.web }}
 
-         
+          UploadtoBlobStorage:
 
-            
+            runs-on: ubuntu-latest
+            needs: build-and-deploy-infrastructure-piece
+            steps:
+            - uses: actions/checkout@v2
 
+            - name: login to AZ CLI
+              uses: azure/login@v1
+              with:
+                creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+            - name: and display something
+              uses: azure/CLI@v1
+              with:
+                  azcliversion: 2.30.0
+                  inlineScript: |
+                              storage_account=${{ needs.build-and-deploy-infrastructure-piece.outputs.output3 }}
+                              az storage blob upload-batch --account-name $storage_account  -d '$web' -s code/frontend/
             
+            - name: Azure Log Out
+              run: |
+                az logout
                  
 
 
