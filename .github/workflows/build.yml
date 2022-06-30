@@ -79,9 +79,11 @@
             
             - name: login via az cli and display something
               uses: azure/login@v1
+              uses: azure/CLI@v1
               with:
+                  azcliversion: 2.0.72
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
-              run: |
+                  inlineScript: |
                  az storage account list  -g ${{ steps.retrieve_func_url.outputs.func_url }} --query "[0].{name:name}" --output tsv
 
                 
