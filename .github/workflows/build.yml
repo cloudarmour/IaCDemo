@@ -82,19 +82,16 @@
                  echo $verify
             
 
-            
-
-                
             outputs:
               output1: ${{ steps.retrieve_rg_name.outputs.rg }}
               output2: ${{ steps.retrieve_func_name.outputs.func }}
               output3: ${{ steps.retrieve_func_url.outputs.func_url }}
 
           UploadtoBlobStorage:
+
             runs-on: ubuntu-latest
             needs: build-and-deploy-infrastructure-piece
             steps:
-
             - uses: actions/checkout@v2
 
             - name: login to AZ CLI
