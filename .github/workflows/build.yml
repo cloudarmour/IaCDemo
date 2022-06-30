@@ -100,9 +100,9 @@
                 creds: ${{ secrets.AZURE_CREDENTIALS }}
 
             - name: and display something
-              uses: azure/CLI@v1.0.4
+              uses: azure/CLI@v1
               with:
-                  azcliversion: 2.29.2
+                  azcliversion: 2.30.0
                   inlineScript: |
                               #az account set -s ${{secrets.TF_SUBSCRIPTION_ID}}
                               #az account set -s "9619d67e-52a5-4c61-9959-0c7bc2066775"
